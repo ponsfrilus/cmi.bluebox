@@ -5,6 +5,6 @@ To install the NOC:
 
 sudo bash
 cd /opt
-git clone https://github.com/epfl-sti/cmi.bluebox.git
+git clone --recursive https://github.com/epfl-sti/cmi.bluebox.git
 ./install_noc.sh
 
