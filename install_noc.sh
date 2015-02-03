@@ -76,10 +76,16 @@ while(<$fh>) {
       emit_include_line();
     }
     $nesting -= 1;
+    $in_node_section = 0;
   }
   print;
 }
-warn "Done";
+if (! defined $in_node_section) {
+  print qq'node "$hostname" {\n';
+  $nesting = 1;
+  emit_include_line();
+  print "}\n";
+}
 
 EOF
 ) "$puppet_site_file" "$(facter fqdn)" > "$puppet_site_file".new
