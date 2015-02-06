@@ -22,6 +22,9 @@ docker images -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l || {
     docker -t "$BLUEBOXNOC_DOCKER_NAME":prod .
 }
 
+: ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
+mkdir -p "${BLUEBOXNOC_VAR_DIR}"
+
 substitute_shell BLUEBOXNOC_ < run_noc.sh > /etc/init.d/blueboxnoc
 
 set +x

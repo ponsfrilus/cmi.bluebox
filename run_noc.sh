@@ -5,6 +5,7 @@
 # Can be used / installed as a SysV startup script
 
 : ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
+: ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
 
 start() {
     test 0 '!=' $(docker ps -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l) && return
