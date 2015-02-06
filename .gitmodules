@@ -1,3 +1,0 @@
-[submodule "puppet-tinc"]
-	path = puppet-tinc
-	url = https://github.com/epfl-sti/puppet-tinc.git
