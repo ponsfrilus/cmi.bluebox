@@ -17,4 +17,7 @@ docker images -q "$DOCKER_IMAGE_NAME" | wc -l || {
     docker -t "$DOCKER_IMAGE_NAME":prod .
 }
 
-echo "Done, now see run_noc.sh"
+set +x
+echo
+echo "All done, now see run_noc.sh"
+echo
