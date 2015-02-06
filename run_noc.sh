@@ -4,10 +4,10 @@
 #
 # Can be used / installed as a SysV startup script
 
-: ${DOCKER_IMAGE_NAME:=epflsti/blueboxnoc}  # Like in install_noc.sh
+: ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
 
 start() {
-    test 0 '!=' $(docker ps -q "$DOCKER_IMAGE_NAME" | wc -l) && return
+    test 0 '!=' $(docker ps -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l) && return
     # ???
     # Profit!!
 }
@@ -18,7 +18,7 @@ stop() {
 
 case "$1" in
     status)
-        docker ps $DOCKER_IMAGE_NAME ;;
+        docker ps $BLUEBOXNOC_DOCKER_NAME ;;
     start)
         start ;;
     stop)

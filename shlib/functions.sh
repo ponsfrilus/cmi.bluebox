@@ -85,3 +85,24 @@ has_puppet() {
 has_puppet_agent() {
     grep -q "\[agent\]" $(puppet config print config 2>/dev/null)
 }
+
+# Substitute default variables in shell script with the values currently
+# in force
+# Usage: substitute_shell VARPREFIX_ < filename
+substitute_shell() {
+    set | grep "^$1" > /tmp/substvars
+    perl -Mstrict -MText::ParseWords \
+         -wpe 'our %substs;
+              BEGIN {
+                 open(SUBSTVARS, "</tmp/substvars");
+                 while(<SUBSTVARS>) {
+                    chomp;
+                    my ($var, $qval) = m/^(.*?)=(.*)$/ or next;
+                    my ($val) = Text::ParseWords::shellwords($qval);
+                    $substs{$var} = $val;
+                 }
+              }
+              foreach my $subst (keys %substs) {
+                s|^: \$\{$subst:=.*?\}|sprintf(q/: ${%s:="%s"}/, $subst, $substs{$subst})|e;
+              }'
+}
