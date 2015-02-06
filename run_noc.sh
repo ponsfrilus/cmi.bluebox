@@ -6,18 +6,21 @@
 
 : ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
 : ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
+: ${BLUEBOXNOC_CODE_DIR:="."}
+
 
 start() {
     test 0 '!=' $(docker ps -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l) && return
-    docker run --net=host -d \
+    docker run --net=host --device=/dev/net/tun -d \
            -v "$BLUEBOXNOC_VAR_DIR":/srv \
+           -v "$BLUEBOXNOC_CODE_DIR":/opt/blueboxnoc \
            "$BLUEBOXNOC_DOCKER_NAME" \
-           sleep 3600  # XXX
+           node /opt/blueboxnoc/blueboxnoc-ui/helloworld.js # XXX Must start tinc too
     # Profit!!
 }
 
 stop() {
-    docker ps -q epflsti/blueboxnoc | xargs --no-run-if-empty docker kill
+    docker ps -q $BLUEBOXNOC_DOCKER_NAME | xargs --no-run-if-empty docker kill
 }
 
 case "$1" in
@@ -27,6 +30,8 @@ case "$1" in
         start ;;
     stop)
         stop ;;
+    shell)
+        docker exec -it $(docker ps -q $BLUEBOXNOC_DOCKER_NAME) bash ;;
     restart)
         stop
         start ;;

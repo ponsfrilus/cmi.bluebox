@@ -19,3 +19,5 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y tinc curl
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
 EXPOSE 80
+# For tinc:
+EXPOSE 655
