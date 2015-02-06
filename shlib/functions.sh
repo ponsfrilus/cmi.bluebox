@@ -27,9 +27,10 @@ check_docker_version() {
          -e 'my ($dockerversion) = $dockerversionstring =~
                        m/Docker version (\S+?)(,|\s)/i;' \
          -e 'if (! $dockerversion) { exit 2 };' \
+         -e 'my $minversion = "'"$minversion"'";' \
          -e 'if (version->parse($dockerversion) <
-                 version->parse("'"$minversion"'")) {
-               exit 1;
+                 version->parse($minversion)) {
+               die "Docker version is $dockerversion, $minversion or higher required\n";
              }'
 }
 
@@ -58,6 +59,7 @@ ensure_docker_installed() {
     check_docker_version "$minversion"  || {
         echo >&2 "Unable to install Docker."
         echo >&2 "Please install Docker $minversion or higher, and run the script again."
+        exit 2
     }
 }
 
