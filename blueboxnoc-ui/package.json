@@ -1,0 +1,24 @@
+{
+  "name": "blueboxnoc-ui",
+  "version": "0.0.0",
+  "description": "BlueBoxNoc Web UI in node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epfl-sti/cmi.bluebox.git"
+  },
+  "keywords": [
+    "OpenWRT",
+    "Docker",
+    "CMi",
+    "EPFL"
+  ],
+  "author": "Dominique Quatravaux",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/epfl-sti/cmi.bluebox/issues"
+  }
+}
