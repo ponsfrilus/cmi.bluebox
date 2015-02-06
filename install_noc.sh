@@ -10,7 +10,7 @@ cd "$CHECKOUT_DIR"
 . shlib/functions.sh
 
 ensure_running_as_root
-ensure_docker_installed 1.4.0
+ensure_docker 1.4.0
 
 : ${DOCKER_IMAGE_NAME:=epflsti/blueboxnoc}
 docker images -q "$DOCKER_IMAGE_NAME" | wc -l || {

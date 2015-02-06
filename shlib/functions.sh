@@ -19,7 +19,7 @@ ensure_running_as_root() {
     esac
 }
 
-check_docker_version() {
+check_docker() {
     local minversion=$1
     [ -z "$minversion" ] && minversion=1.4.0
     perl -w -Mstrict -Mversion \
@@ -34,9 +34,9 @@ check_docker_version() {
              }'
 }
 
-ensure_docker_installed() {
+ensure_docker() {
     local minversion=$1
-    check_docker_version "$minversion"  && return
+    check_docker "$minversion"  && return
     
     case "$(linux_distribution_name)" in
         Ubuntu)
@@ -56,7 +56,7 @@ ensure_docker_installed() {
             yum -y install docker-io
             ;;
     esac
-    check_docker_version "$minversion"  || {
+    check_docker "$minversion"  || {
         echo >&2 "Unable to install Docker."
         echo >&2 "Please install Docker $minversion or higher, and run the script again."
         exit 2
