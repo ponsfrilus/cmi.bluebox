@@ -9,7 +9,7 @@
 
 start() {
     test 0 '!=' $(docker ps -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l) && return
-    docker run -d \
+    docker run --net=host -d \
            -v "$BLUEBOXNOC_VAR_DIR":/srv \
            "$BLUEBOXNOC_DOCKER_NAME" \
            sleep 3600  # XXX
