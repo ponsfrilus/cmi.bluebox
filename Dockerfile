@@ -18,6 +18,10 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y tinc curl
 # https://github.com/joyent/node/wiki/installing-node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
+
+# http://www.rexify.org/get
+RUN curl -L get.rexify.org | perl - --sudo -n Rex
+
 EXPOSE 80
 # For tinc:
 EXPOSE 655
