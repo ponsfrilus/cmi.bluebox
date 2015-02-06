@@ -18,9 +18,7 @@ ensure_running_as_root
 ensure_docker 1.4.0
 
 : ${BLUEBOXNOC_DOCKER_NAME:=epflsti/blueboxnoc}
-test 0 != $(docker images -q "$BLUEBOXNOC_DOCKER_NAME" | wc -l) || {
-    docker build -t "$BLUEBOXNOC_DOCKER_NAME":latest .
-}
+docker build -t "$BLUEBOXNOC_DOCKER_NAME":latest .
 
 : ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
 mkdir -p "${BLUEBOXNOC_VAR_DIR}"
