@@ -13,7 +13,7 @@
 FROM ubuntu
 MAINTAINER Dominique Quatravaux <dominique.quatravaux@epfl.ch>
 
-RUN apt-get update && apt-get upgrade && apt-get install -y tinc curl
+RUN apt-get update && apt-get -y upgrade && apt-get install -y tinc curl
 
 # https://github.com/joyent/node/wiki/installing-node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
