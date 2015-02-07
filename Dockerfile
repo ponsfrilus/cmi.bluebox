@@ -22,6 +22,7 @@ RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN apt-get install -y nodejs
 
 # http://www.rexify.org/get
+RUN apt-get -y install build-essential libexpat1-dev libxml2-dev libssh2-1-dev libssl-dev
 RUN curl -L get.rexify.org | perl - --sudo -n Rex
 
 EXPOSE 80
