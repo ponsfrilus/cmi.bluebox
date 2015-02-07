@@ -1,11 +1,14 @@
 #!/bin/bash
 #
-# Run this script as root from a fresh git checkout to run the Blue Box NOC.
+# Blue Box NOC installation script
+#
+# Run this as root from a fresh git checkout to install the .
 #
 # Variables in BLUEBOXNOC_ALL_CAPS style below may be overridden in
 # the environment, e.g.
 #
-# BLUEBOXNOC_VAR_DIR=/srv/blueboxnoc install_noc.sh
+#   export BLUEBOXNOC_VAR_DIR=/var/snazzy/blueboxnoc
+#   sudo install_noc.sh
 
 set -e -x
 
