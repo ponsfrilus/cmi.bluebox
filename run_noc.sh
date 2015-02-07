@@ -6,6 +6,11 @@
 # installs it in this way), or directly from the source code checkout
 # (need to either be in the docker group, or use sudo).
 
+. shlib/functions.sh
+ensure_running_as_root
+
+[ $# -eq 0 ] && { echo "Usage: $0 [[status|start|stop|shell|restart]]"; exit 1; }
+
 : ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
 : ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
 : ${BLUEBOXNOC_CODE_DIR:="$(cd $(dirname "$0"); pwd)"}
