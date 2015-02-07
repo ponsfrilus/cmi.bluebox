@@ -7,8 +7,10 @@
 #   2. Using the vigr command, put yourself as a member of the "docker" group;
 #      log out then back in
 #   3. cd to the directory of this file
-#   4. docker build -t epflsti/blueboxnoc:v0 .
-#      docker run -t -i epflsti/blueboxnoc:v0 /bin/bash
+#   4. docker build -t epflsti/blueboxnoc:dev .
+#      docker run -t -i epflsti/blueboxnoc:dev /bin/bash
+#
+# To enact the changes, simply run install_noc.sh again and restart.
 
 FROM ubuntu
 MAINTAINER Dominique Quatravaux <dominique.quatravaux@epfl.ch>
