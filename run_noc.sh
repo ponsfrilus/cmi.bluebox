@@ -2,7 +2,9 @@
 
 # Start or stop the Docker image for blueboxnoc
 #
-# Can be used / installed as a SysV startup script
+# Can be used / installed as a SysV startup script (and install_noc.sh
+# installs it in this way), or directly from the source code checkout
+# (need to either be in the docker group, or use sudo).
 
 : ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
 : ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
