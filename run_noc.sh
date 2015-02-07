@@ -6,7 +6,7 @@
 
 : ${BLUEBOXNOC_DOCKER_NAME:="epflsti/blueboxnoc"}
 : ${BLUEBOXNOC_VAR_DIR:="/srv/blueboxnoc"}
-: ${BLUEBOXNOC_CODE_DIR:="."}
+: ${BLUEBOXNOC_CODE_DIR:="$(cd $(dirname "$0"); pwd)"}
 
 
 start() {
